@@ -23,6 +23,7 @@ const songs = [
 	"Maneskin - Beggin",
 ];
 
+
 //track song
 let songIndex = 0;
 
@@ -34,7 +35,10 @@ function loadSong(songName) {
 	title.innerText = songName;
 	song.src = `songs/${songName}.mp3`;
 	cover.src = `images/${songName}.jpg`;
+	console.log(songName)
 }
+
+
 
 function playSong() {
 	musicContainer.classList.add("play");
@@ -103,3 +107,18 @@ nextBtn.addEventListener("click", nextSong);
 song.addEventListener("timeupdate", updateProgress);
 progressContainer.addEventListener("click", setProgress);
 song.addEventListener("ended", nextSong);
+
+
+//Song Lists
+for(i=0;songs.length>i;i++){
+	console.log(songs[i])
+	function clickSong(songName) {
+		title.innerText = songName;
+		song.src = `songs/${songName}.mp3`;
+		cover.src = `images/${songName}.jpg`;
+		songIndex=i
+		console.log(songName)
+		playSong();
+	}
+	document.getElementById('songList').innerHTML += `<br><button onclick="clickSong('${songs[i]}')" style="width:20rem;text-align:left;margin-bottom:.5rem;background-color:black;color:white;margin-left: 50%;transform: translate(-50%);">${songs[i]}</button>`;
+}
