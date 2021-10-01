@@ -8,6 +8,7 @@ const progressContainer = document.querySelector(".progress-container");
 const title = document.querySelector("#title");
 const cover = document.querySelector(".music-cover");
 const loading = document.querySelector(".loading");
+const songList = document.querySelector(".song-list");
 
 // loading
 setTimeout(()=>{
@@ -28,6 +29,28 @@ let songIndex = 0;
 
 // loading song info in DOM
 loadSong(songs[songIndex]);
+
+// loading song info in DOM
+for (let i = 0; i < songs.length; i++) {
+    const song = songs[i];
+
+    const li = document.createElement("li");
+    li.innerText = song;
+
+    li.onclick = () => {
+        document.querySelector(".red-text").classList.remove("red-text")
+        li.classList.add("red-text")
+        songIndex = i;
+		loadSong(songs[songIndex]);
+        playSong();
+    }
+
+    if (i === 0) {
+        li.classList.add("red-text")
+    }
+
+    songList.appendChild(li)
+}
 
 //update song details
 function loadSong(songName) {
@@ -58,6 +81,29 @@ function nextSong() {
 		songIndex = 0;
 		loadSong(songs[songIndex]);
 	}
+
+    songList.innerHTML = "";
+
+    for (let i = 0; i < songs.length; i++) {
+        const song = songs[i];
+    
+        const li = document.createElement("li");
+        li.innerText = song;
+
+        li.onclick = () => {
+            document.querySelector(".red-text").classList.remove("red-text")
+            li.classList.add("red-text")
+            songIndex = i;
+            loadSong(songs[songIndex]);
+            playSong();
+        }
+    
+        if (i === songIndex) {
+            li.classList.add("red-text")
+        }
+    
+        songList.appendChild(li)
+    }
 	playSong();
 }
 
@@ -69,6 +115,29 @@ function prevSong() {
 		songIndex = 4;
 		loadSong(songs[songIndex]);
 	}
+    
+    songList.innerHTML = "";
+
+    for (let i = 0; i < songs.length; i++) {
+        const song = songs[i];
+    
+        const li = document.createElement("li");
+        li.innerText = song;
+
+        li.onclick = () => {
+            document.querySelector(".red-text").classList.remove("red-text")
+            li.classList.add("red-text")
+            songIndex = i;
+            loadSong(songs[songIndex]);
+            playSong();
+        }
+    
+        if (i === songIndex) {
+            li.classList.add("red-text")
+        }
+    
+        songList.appendChild(li)
+    }
 	playSong();
 }
 
