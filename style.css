@@ -82,10 +82,12 @@ header{
 	}
 }
 .navigation{
+
 	display: flex;
-	justify-content: space-around;
-	width: 400px;
-	margin-top: 1rem;
+	margin-top: 1em;
+    justify-content: space-around;
+    max-width: 90%;
+    width: 400px;
 }
 .navigation button{
 	border: none;
