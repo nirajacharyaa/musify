@@ -14,10 +14,9 @@ let isShuffle = false;
 let playedIndex = [];
 let shuffledSongs = [];
 // loading
-// setTimeout(() => {
-//     loading.remove();
-// }, 5000);
-loading.remove();
+setTimeout(() => {
+    loading.remove();
+}, 5000);
 
 // songs titles
 const songs = [
