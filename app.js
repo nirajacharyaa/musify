@@ -8,11 +8,13 @@ const progressContainer = document.querySelector(".progress-container");
 const title = document.querySelector("#title");
 const cover = document.querySelector(".music-cover");
 const loading = document.querySelector(".loading");
+const randomBtn = document.querySelector("#random");
+const repeatBtn = document.querySelector("#repeat");
 
 // loading
-setTimeout(()=>{
+setTimeout(() => {
 	loading.remove();
-},5000);
+}, 5000);
 
 // songs titles
 const songs = [
@@ -25,6 +27,12 @@ const songs = [
 
 //track song
 let songIndex = 0;
+
+//Check random button of music player
+let randomMode = 0;
+
+//Check repeat button of music player
+let repeatMode = 0;
 
 // loading song info in DOM
 loadSong(songs[songIndex]);
@@ -72,8 +80,72 @@ function prevSong() {
 	playSong();
 }
 
+
+function randomSongUtil() {
+	const totalSongs = songs.length;
+	let newSongIndex = Math.floor(Math.random() * totalSongs);
+	while (newSongIndex == songIndex) {
+		newSongIndex = Math.floor(Math.random() * totalSongs);
+	}
+	songIndex = newSongIndex;
+	loadSong(songs[songIndex]);
+	playSong();
+}
+
+
+function repeatSongUtil() {
+	loadSong(songs[songIndex]);
+	playSong();
+}
+
+function randomSong() {
+	if (randomMode == 0) {
+		randomBtn.querySelector("i.fa").classList.add("fa-expand-arrows-alt");
+		randomBtn.querySelector("i.fa").classList.remove("fa-random");
+
+		repeatBtn.querySelector("i.fa").classList.add("fa-redo-alt");
+		repeatBtn.querySelector("i.fa").classList.remove("fa-redo");
+		randomMode = 1;
+		repeatMode = 0;
+	} else {
+		randomBtn.querySelector("i.fa").classList.add("fa-random");
+		randomBtn.querySelector("i.fa").classList.remove("fa-expand-arrows-alt");
+		randomMode = 0;
+	}
+}
+
+function repeatSong() {
+	if (repeatMode == 0) {
+		randomBtn.querySelector("i.fa").classList.add("fa-random");
+		randomBtn.querySelector("i.fa").classList.remove("fa-expand-arrows-alt");
+
+		repeatBtn.querySelector("i.fa").classList.add("fa-redo-alt");
+		repeatBtn.querySelector("i.fa").classList.remove("fa-redo");
+		randomMode = 0;
+		repeatMode = 1;
+
+	} else {
+		repeatBtn.querySelector("i.fa").classList.add("fa-redo");
+		repeatBtn.querySelector("i.fa").classList.remove("fa-redo-alt");
+		repeatMode = 0;
+	}
+}
+
+function checkMode() {
+	if (repeatMode == 0 && randomMode == 1) {
+		randomSongUtil();
+	} else if (repeatMode == 1 && randomMode == 0) {
+		repeatSongUtil();
+	} else {
+		nextSong();
+	}
+}
+
 function updateProgress(e) {
-	const { duration, currentTime } = e.srcElement;
+	const {
+		duration,
+		currentTime
+	} = e.srcElement;
 	const progressPercent = (currentTime / duration) * 100;
 	progress.style.width = `${progressPercent}%`;
 }
@@ -102,4 +174,6 @@ prevBtn.addEventListener("click", prevSong);
 nextBtn.addEventListener("click", nextSong);
 song.addEventListener("timeupdate", updateProgress);
 progressContainer.addEventListener("click", setProgress);
-song.addEventListener("ended", nextSong);
+randomBtn.addEventListener("click", randomSong);
+repeatBtn.addEventListener("click", repeatSong);
+song.addEventListener("ended", checkMode)
