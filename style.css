@@ -7,11 +7,11 @@
 }
 
 body {
-	height: 100vh;
+	height: 98vh;
 	background-image: linear-gradient(
 		0deg,
-		rgb(247, 247, 247) 23.8%,
-		rgb(252, 221, 221) 92%
+		rgb(247, 247, 247) 24%,
+		rgb(252, 221, 221) 100%
 	);
 	font-family: poppins;
 }
@@ -21,7 +21,7 @@ header{
 	margin: 1rem 0 0 0;
 }
 .loading{
-	height: 100vh;
+	height: 110vh;
 	width: 100vw;
 	position: absolute;
 	z-index: 10;
@@ -118,3 +118,49 @@ header{
 	transition: width 0.1s linear;
 }
 
+.github_logo{
+	max-width: 2rem;
+	max-height: 2rem;
+}
+
+.footertext{
+	padding-bottom: 5px;
+}
+
+footer{
+	background: rgb(252,221,221);
+	background: linear-gradient(360deg, rgba(252,221,221,1) 35%, #f7f7f7 100%); 
+	position: fixed;
+	width: 100%;
+	text-align: center;
+}
+
+footer a{
+	text-decoration: none;
+}
+
+footer a:visited{
+	text-decoration: none;
+	color: black;
+}
+
+footer a:hover{
+	color: #fe8daa;
+}
+
+@media (max-height: 700px){
+	footer{
+		background: none;
+		text-align: left;
+		max-width: 5vw;
+	}
+}
+
+@media (max-width: 400px){
+	.footertext{
+		font-size: small;
+	}
+	footer{
+		text-align: center;
+	}
+}
