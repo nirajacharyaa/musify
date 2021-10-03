@@ -3,7 +3,7 @@ const playBtn = document.querySelector("#play");
 const prevBtn = document.querySelector("#prev");
 const nextBtn = document.querySelector("#next");
 const song = document.querySelector("#song");
-const progress = document.querySelector(".progress");
+const progress = document.querySelector(".progressBar");
 const progressContainer = document.querySelector(".progress-container");
 const title = document.querySelector("#title");
 const cover = document.querySelector(".music-cover");
@@ -22,6 +22,7 @@ const songs = [
 	"Galti hazar hunchan",
 	"Yellow",
 	"Maneskin - Beggin",
+    "driver license"
 ];
 
 //track song
@@ -74,7 +75,7 @@ function pauseSong() {
 }
 
 function nextSong() {
-	if (songIndex < 4) {
+	if (songIndex < 5) {
 		songIndex++;
 		loadSong(songs[songIndex]);
 	} else {
@@ -112,7 +113,7 @@ function prevSong() {
 		songIndex--;
 		loadSong(songs[songIndex]);
 	} else {
-		songIndex = 4;
+		songIndex = 5;
 		loadSong(songs[songIndex]);
 	}
     

@@ -119,12 +119,13 @@ header {
   cursor: pointer;
 }
 
-.progress {
+.progressBar {
   background-color: #fe8daa;
   height: 100%;
   width: 0%;
   border-radius: 20px;
   transition: width 0.1s linear;
+  z-index: 1;
 }
 
 .song-list-cont {
