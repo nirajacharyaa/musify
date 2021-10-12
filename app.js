@@ -9,6 +9,7 @@ const title = document.querySelector("#title");
 const cover = document.querySelector(".music-cover");
 const loading = document.querySelector(".loading");
 const songList = document.querySelector(".song-list");
+const repeatBtn = document.querySelector("#repeat");
 
 // loading
 setTimeout(()=>{
@@ -166,6 +167,13 @@ playBtn.addEventListener("click", () => {
 		playSong();
 	}
 });
+
+
+
+ repeatBtn.addEventListener("click", () => {
+       song.currentTime = 0;
+       loadMusic(songIndex)
+   })
 
 //change songs
 prevBtn.addEventListener("click", prevSong);
