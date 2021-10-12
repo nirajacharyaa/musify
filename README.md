@@ -5,6 +5,8 @@
 Want to contribute? Read [this](https://github.com/nirajacharyaa/musify/blob/main/CONTRIBUTING.md).
 
 # Musify
+Musify is most popular with young people.
+Spotify makes music discovery extremely easy while also making it easy to listen to the songs you already love. 
 
 Player for my favourite songs with Javascript
 
