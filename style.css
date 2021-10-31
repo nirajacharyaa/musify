@@ -151,7 +151,10 @@ header {
 .musify {
   display: inline-block;
   position: relative;
-  left: 650px;
+  left: 580px;
+}
+#repeat{
+  margin: -70px;
 }
 
 @media only screen and (max-width: 1040px) {
