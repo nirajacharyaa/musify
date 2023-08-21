@@ -23,7 +23,10 @@ const songs = [
 	"Galti hazar hunchan",
 	"Yellow",
 	"Maneskin - Beggin",
-    "driver license"
+    "driver license",
+    "Love-Me-Like-You-Do",
+    "Shake_It_Off",
+    "Despacito"
 ];
 
 //track song
